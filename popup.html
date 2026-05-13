@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { width: 380px; padding: 12px; font-family: system-ui, sans-serif; }
+    .mode-selector, .option-group { margin-bottom: 12px; }
+    label { font-weight: 600; display: block; margin-bottom: 4px; }
+    select, input, textarea { width: 100%; margin-top: 4px; margin-bottom: 8px; box-sizing: border-box; }
+    textarea { height: 70px; font-family: monospace; }
+    button { margin-right: 6px; margin-bottom: 8px; cursor: pointer; }
+    .result { font-size: 1.3em; margin-top: 8px; padding: 8px; background: #f2f2f2; border-radius: 6px; font-weight: bold; }
+    .preset-row { display: flex; gap: 6px; margin-top: 8px; }
+    #presetName { flex: 2; }
+    hr { margin: 12px 0; }
+    .inline-group { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .inline-group label { margin-bottom: 0; flex: 1; }
+    .inline-group input { width: auto; margin-bottom: 0; }
+    .helper-text { font-size: 0.75em; color: #666; margin-top: -4px; margin-bottom: 8px; }
+    .status { font-size: 0.8em; color: #555; margin-top: 4px; }
+    .auto-status { font-weight: normal; font-size: 0.8em; color: #2c7da0; margin-left: 6px; }
+    .warning-text { font-size: 0.75em; color: #d9534f; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <h3>Custom Element Counter</h3>
+
+  <div class="mode-selector">
+    <label>🔍 Search mode:</label>
+    <select id="mode">
+      <option value="css">CSS selector (faster, simpler)</option>
+      <option value="xpath">XPath (more powerful, slower)</option>
+    </select>
+    <div id="xpathWarning" class="warning-text" style="display: none;">⚠️ XPath may not work inside shadow roots. Use CSS selectors when Shadow DOM is enabled.</div>
+  </div>
+
+  <label>📝 Selector / XPath expression:</label>
+  <textarea id="selector" placeholder="Example CSS: div, .class, #id&#10;Example XPath: //div, //*[@class='item']"></textarea>
+
+  <div class="option-group">
+    <div class="inline-group">
+      <label for="shadowDOMCheckbox">⚙️ Include Shadow DOM &nbsp;<span style="font-weight:normal;">(slower, but finds elements inside shadow roots – needed for some modern web components)</span></label>
+      <input type="checkbox" id="shadowDOMCheckbox">
+    </div>
+  </div>
+
+  <div class="option-group">
+    <label>🔄 Auto‑refresh count every (ms): <span id="autoStatus" class="auto-status"></span></label>
+    <input type="number" id="interval" value="2000" step="500">
+    <div class="helper-text">⬇️ Lower = more real‑time, but may slow down heavy pages. Any positive number works (0 = disable).</div>
+  </div>
+
+  <div>
+    <button id="applyBtn">▶ Start Auto‑refresh</button>
+    <button id="stopBtn">⏹️ Stop Auto‑refresh</button>
+    <button id="countNowBtn">🔍 Count Now</button>
+  </div>
+
+  <div class="result" id="result">Count: —</div>
+  <div class="status" id="statusMsg">Ready</div>
+
+  <hr>
+
+  <h4>💾 Presets (max 5)</h4>
+  <div>
+    <input type="text" id="presetName" placeholder="Preset name" />
+    <button id="savePresetBtn">Save Current</button>
+  </div>
+  <div class="preset-row">
+    <select id="presetList">
+      <option value="">-- Load preset --</option>
+    </select>
+    <button id="loadPresetBtn">Load</button>
+    <button id="deletePresetBtn">Delete</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

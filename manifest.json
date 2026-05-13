@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "name": "Custom Element Counter",
+  "version": "1.2.0",
+  "description": "Count any DOM elements on any website using CSS selectors or XPath. Background auto‑refresh, toolbar badge, shadow DOM support.",
+  "author": "Your Name",
+  "homepage_url": "https://github.com/yourusername/custom-element-counter",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{7ea2c70c-e6e8-4d54-847b-07bd150bcd88}",
+      "strict_min_version": "109.0"
+    }
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_action": {
+    "default_title": "Custom Element Counter",
+    "default_popup": "popup.html",
+    "default_icon": "icons/icon.svg"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "icons": {
+    "48": "icons/icon.svg"
+  }
+}
