@@ -4,12 +4,11 @@ A Firefox extension that counts DOM elements on any website using CSS selectors 
 
 ## ✨ Features
 
-- Count elements with **CSS selectors** or **XPath**
-- **Auto‑refresh** in the background (interval adjustable)
-- **Toolbar badge** shows count (up to 99k, then ∞)
-- **Shadow DOM** support (toggle on/off)
-- Save up to **5 presets** for quick access
-- Works on **all websites** (no data collection)
+- **CSS selector or XPath** – choose your preferred method
+- **Auto‑refresh in background** – configurable interval, toolbar badge shows count (0–999, then 1k–99k, then ∞)
+- **Shadow DOM support** – count elements inside web components (toggle on/off)
+- **Presets** – save up to 5 selectors for quick access
+- **Works on all websites** – no data collection, no external requests
 
 ## 🔧 Install from source (temporary)
 
@@ -18,17 +17,13 @@ A Firefox extension that counts DOM elements on any website using CSS selectors 
 3. Click **This Firefox** → **Load Temporary Add‑on**.
 4. Select the `manifest.json` file.
 
-## 📦 Published version
+## 🚫 No maintenance, no support, no contributions
 
-Find it on [addons.mozilla.org](https://addons.mozilla.org/firefox/addon/custom-element-counter/) (once published).
-
-## ⚠️ No maintenance
-
-This add‑on was created for personal use. I do not plan to provide updates, bug fixes, or support. Use at your own risk.
+This add‑on was created for personal use and is published as‑is. I do **not** provide updates, bug fixes, support, or accept pull requests. You are free to fork this repository and modify the code for your own needs. Use it at your own risk.
 
 ## 📄 License
 
-[MIT](LICENSE)
+[MIT](LICENSE) – do whatever you want with the code, but no warranty.
 
 ## 🙏 Attribution
 
